@@ -1,0 +1,121 @@
+<div class="col 8">
+  <div class="container" *ngIf="tourdetails" style="margin-top: 11%;">
+    <div class="card">
+      <div class="card-header">
+        <button type="button" style="float: left;" class="btn btn-primary btn-lg" (click)=" matchstatus()">Match
+          Status</button>Tournament Details
+      </div>
+      <div class="card-body">
+        <table datatable [dtOptions]="dtOptions" class="table hover">
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container" *ngIf="induvi"  style="margin-top: 11%;">
+
+  <div class="card" >
+    <div class="card-header">
+      <i class="fa fa-times-circle float-left" (click)= 'induvailclose()'></i>Induvial Details <button class="btn btn-primary btn-lg registerbtn" [disabled]="!register"
+        (click)="RegisterForm()"> Register</button>
+    </div>
+    <div class="card-body">
+      
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Tounament Name</th>
+              <th scope="col">Reg StartDate</th>
+              <th scope="col">Reg EndDate</th>
+              <th scope="col">Tournament Start Date</th>
+              <th scope="col">Tournament End Date</th>
+              <th scope="col">Allowed Teams</th>
+              <th scope="col">Venue</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let invi of induvaltour">
+              
+              <td> {{ invi['TournamentName'] }}</td>
+              <td>{{ invi['RegStartDate'] }}</td>
+              <td>{{ invi['RegEndDate'] }}</td>
+              <td>{{ invi['TournamentStartDate'] }}</td>
+              <td>{{ invi['TournamentEndDate'] }}</td>
+              <td>{{ invi['AllowedTeams'] }}</td>
+              <td>{{ invi['Venue'] }}</td>
+            </tr>
+          </tbody>
+        </table>
+        
+    </div>
+  </div>
+</div>
+
+
+<div class="container" *ngIf="formenable" style="margin-top: 11%;">
+  <div class="card">
+    <div class="card-header">
+      Tournament Register </div>
+    <div class="card-body">
+      <form *ngIf="formenable" [formGroup]="checkoutForm" (ngSubmit)="onSubmit(checkoutForm.value)">
+        <div class="form-group">
+          <label for="TournamentName">Tourid</label>
+          <input type="text" class="form-control" formControlName='TournamentName' id="TournamentName"
+            placeholder="Another input" [(ngModel)]="id" >
+        </div>
+        <div class="form-group">
+          <label for="TeamName">TeamName</label>
+          <input type="text" class="form-control" formControlName='TeamName' id="TeamName" placeholder="Another input">
+        </div>
+        <div class="form-group">
+          <label for="CoachName">CoachName</label>
+          <input type="text" class="form-control" formControlName='CoachName' id="CoachName"
+            placeholder="Another input">
+        </div>
+        <div class="form-group">
+          <label for="formGroupExampleInput2">ManagerName</label>
+          <input type="text" class="form-control" formControlName='ManagerName' id="ManagerName"
+            placeholder="Another input">
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Sign in</button>
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+
+  <div class="container" *ngIf="status">
+    <div class="card">
+      <div class="card-header">
+        Match Status <i class="fa fa-times-circle float-right" (click)= 'tourdetailsshow()'></i></div>
+      <div class="card-body">
+        <div class="col-12">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">TounamentName</th>
+                <th scope="col">Team1 Name</th>
+                <th scope="col">Team2 Name</th>
+                <th scope="col">Match Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let values of matchstatusvalues">
+                
+                <td> {{ values['Tournamentid'] }}</td>
+                <td>{{ values['Team1Name']}}</td>
+                <td>{{ values['Team2Name']}}</td>
+                <td>{{values['GameDate'] }}</td>
+              </tr>
+            </tbody>
+          </table>
+          
+        </div>
+
+      </div>
+
+    </div>
+  </div>

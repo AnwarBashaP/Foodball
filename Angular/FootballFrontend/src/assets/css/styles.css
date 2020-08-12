@@ -1,0 +1,12 @@
+
+.card-header {
+    text-align: center;
+    font-size: 40px;
+    top: 33%;
+}
+.registerbtn{
+    float: right;
+    vertical-align: middle;
+    padding: 13px;
+    background: brown;
+}
